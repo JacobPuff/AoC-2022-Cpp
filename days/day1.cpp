@@ -1,7 +1,68 @@
 #include <iostream>
+#include <fstream>
+#include <vector>
 using namespace std;
 
 #include "Days.h"
 void day1() {
-    std::cout << "Hello World!\n";
+    ifstream input;
+    input.open("inputs/day1input.txt");
+    vector<vector<int>> elves {};
+    int currentElf = 0;
+    string line;
+
+    while (input) {
+        vector<int> food {};
+        while (true && input) {
+            getline(input, line);
+            if (line == "") {
+                break;
+            }
+            food.push_back(stoi(line));
+        }
+        currentElf = currentElf + 1;
+        elves.push_back(food);
+    }
+    
+    // Part 1
+    int maxCalories = 0;
+    int maxElf = -1;
+    for (int e = 0; e < elves.size(); e++) {
+        int currentCalories = 0;
+        for (int f = 0; f < elves[e].size(); f++) {
+            currentCalories += elves[e][f];
+        }
+        if (currentCalories > maxCalories) {
+            maxCalories = currentCalories;
+            maxElf = e;
+        }
+    }
+    cout << "Part 1, max calories: " << maxCalories << " elf: " << maxElf << "\n";
+
+    // Part 2
+    int firstCalories = 0;
+    int secondCalories = 0;
+    int thirdCalories = 0;
+    for (int e = 0; e < elves.size(); e++) {
+        int currentCalories = 0;
+        for (int f = 0; f < elves[e].size(); f++) {
+            currentCalories += elves[e][f];
+        }
+        if (currentCalories > firstCalories) {
+            thirdCalories = secondCalories;
+            secondCalories = firstCalories;
+            firstCalories = currentCalories;
+            continue;
+        }
+        if (currentCalories > secondCalories) {
+            thirdCalories = secondCalories;
+            secondCalories = currentCalories;
+            continue;
+        }
+        if (currentCalories > thirdCalories) {
+            thirdCalories = currentCalories;
+        }
+    }
+    int sum = firstCalories + secondCalories + thirdCalories;
+    cout << "Part 2, top 3 calorie sum: " << sum << "\n"; 
 }
