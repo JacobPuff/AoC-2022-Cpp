@@ -24,7 +24,6 @@ void day1() {
     
     // Part 1
     int maxCalories = 0;
-    int maxElf = -1;
     for (int e = 0; e < elves.size(); e++) {
         int currentCalories = 0;
         for (int f = 0; f < elves[e].size(); f++) {
@@ -32,10 +31,10 @@ void day1() {
         }
         if (currentCalories > maxCalories) {
             maxCalories = currentCalories;
-            maxElf = e;
         }
     }
-    cout << "Part 1, max calories: " << maxCalories << " elf: " << maxElf << "\n";
+    // 70968
+    cout << "Part 1, max calories: " << maxCalories << "\n";
 
     // Part 2
     int firstCalories = 0;
@@ -62,5 +61,6 @@ void day1() {
         }
     }
     int sum = firstCalories + secondCalories + thirdCalories;
+    // 206643
     cout << "Part 2, top 3 calorie sum: " << sum << "\n"; 
 }
