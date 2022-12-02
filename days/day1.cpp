@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
+#include <algorithm>
 using namespace std;
 
 #include "Days.h"
@@ -37,30 +38,17 @@ void day1() {
     cout << "Part 1, max calories: " << maxCalories << "\n";
 
     // Part 2
-    int firstCalories = 0;
-    int secondCalories = 0;
-    int thirdCalories = 0;
+    vector<int> summedCalories(elves.size());
     for (int e = 0; e < elves.size(); e++) {
         int currentCalories = 0;
         for (int f = 0; f < elves[e].size(); f++) {
             currentCalories += elves[e][f];
         }
-        if (currentCalories > firstCalories) {
-            thirdCalories = secondCalories;
-            secondCalories = firstCalories;
-            firstCalories = currentCalories;
-            continue;
-        }
-        if (currentCalories > secondCalories) {
-            thirdCalories = secondCalories;
-            secondCalories = currentCalories;
-            continue;
-        }
-        if (currentCalories > thirdCalories) {
-            thirdCalories = currentCalories;
-        }
+        summedCalories[e] = currentCalories;
     }
-    int sum = firstCalories + secondCalories + thirdCalories;
+    sort(summedCalories.begin(), summedCalories.end());
+    int len = summedCalories.size();
+    int sum = summedCalories[len -1 ] + summedCalories[len-2] + summedCalories[len-3];
     // 206643
     cout << "Part 2, top 3 calorie sum: " << sum << "\n"; 
 }
