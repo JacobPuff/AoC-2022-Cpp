@@ -8,7 +8,6 @@ void day1() {
     ifstream input;
     input.open("inputs/day1input.txt");
     vector<vector<int>> elves {};
-    int currentElf = 0;
     string line;
 
     while (input) {
@@ -20,7 +19,6 @@ void day1() {
             }
             food.push_back(stoi(line));
         }
-        currentElf = currentElf + 1;
         elves.push_back(food);
     }
     
