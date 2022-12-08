@@ -18,6 +18,9 @@ int main() {
         case 3:
             day3();
             break;
+        case 4:
+            day4();
+            break;
         default:
             cout << "Day not found\n";
             return 1;
