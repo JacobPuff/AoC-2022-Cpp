@@ -73,6 +73,6 @@ void day4PartTwo() {
         }
 
     }
-    // 542
+    // 900
     cout << "Part 2, overlapping sections: " << overlappingSections << "\n";
 }
