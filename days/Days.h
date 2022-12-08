@@ -4,3 +4,6 @@ void day3();
 void day4();
 void day4PartOne();
 void day4PartTwo();
+void day5();
+void day5PartOne();
+void day5PartTwo();
