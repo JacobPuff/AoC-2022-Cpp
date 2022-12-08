@@ -21,7 +21,6 @@ int getPriority(char val) {
 void day3() {
     int lowerOffset = 'a';
     int upperOffset = 'A';
-    cout << "lower: " << lowerOffset << " upper: " << upperOffset << "\n";
     ifstream input;
     input.open("inputs/day3input.txt");
     
